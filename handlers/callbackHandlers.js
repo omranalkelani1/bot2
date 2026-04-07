@@ -668,15 +668,25 @@ function register(bot) {
 
     // ── manage_offers ──────────────────────────────────────────────────────
     if (payload.type === 'manage_offers') {
-      const currentOffers = Object.values(offers).filter(o => o.status !== 'done' && o.status !== 'rejected');
-      if (!currentOffers.length) return safeSendMessage(chatId, 'لا توجد عروض حالية');
-      for (const o of currentOffers) {
-        const user = store.getUser(o.userId);
-        await safeSendMessage(chatId, formatPreview(o, `📩 العرض رقم: ${o.number}\nالحالة: ${offerStatus[o.status] || o.status}`), {
+      let dontHaveOffers = true
+      for (const oId in offers) {
+        const offer = offers[oId];
+        if(offer.userId !== query.from.id) continue;
+        dontHaveOffers = false;
+        await safeSendMessage(chatId, formatPreview(offer, `📩 العرض رقم: ${offer.number}\nالحالة: ${offerStatus[offer.status] || offer.status}`), {
           reply_markup: {
             inline_keyboard: [[
-              { text: '✏️ تعديل', callback_data: JSON.stringify({ type: callbackTypes.edit_offer, offerId: o.id }) },
-              { text: '🗑 حذف', callback_data: JSON.stringify({ type: callbackTypes.delete_offer, offerId: o.id }) },
+              { text: '✏️ تعديل', callback_data: JSON.stringify({ type: callbackTypes.edit_offer, offerId: offer.id }) },
+              { text: '🗑 حذف', callback_data: JSON.stringify({ type: callbackTypes.delete_offer, offerId: offer.id }) },
+            ]],
+          },
+        });
+      }
+      if(dontHaveOffers) {
+        await safeSendMessage(chatId, '❗ لا يوجد لديك عروض حالياً', {
+          reply_markup: {
+            inline_keyboard: [[
+              { text: '⬅️ رجوع', callback_data: JSON.stringify({ type: 'send_welcome_message' }) },
             ]],
           },
         });
