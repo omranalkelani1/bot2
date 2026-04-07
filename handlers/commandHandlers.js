@@ -7,7 +7,6 @@ const { requireAdmin }       = require('../middleware/auth');
 const { cancelTrade }        = require('../services/tradeService');
 const { cancelOffer, finishAllOffers, sendOfferForReview } = require('../services/offerService');
 const { getOfferIdByNumber, formatTradeStatus } = require('../utils/helpers');
-const { env }       = require('../env');
 const OFFERS_CHANNEL         = process.env.OFFERS_CHANNEL;
 const CHECK_CHANNEL          = process.env.CHECK_CHANNEL;
 // const START_BOT_PHOTO        = 'AgACAgQAAxkBAAIIUGl0Lub3v4UR_lQ8GOK1-7wy4QsSAAJIC2sbF3WhU19jqCKwW8bzAQADAgADeQADOAQ';

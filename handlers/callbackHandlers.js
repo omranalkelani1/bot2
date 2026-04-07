@@ -16,7 +16,6 @@ const { callbackTypes, transform_way, offerStatus } = require('../config/constan
 const { sendOfferForReview, finishOffer, cancelOffer } = require('../services/offerService');
 const { cancelTrade, finalizeTrade, sendRatingRequest } = require('../services/tradeService');
 const { sendWelcomeMessage } = require('./commandHandlers');
-const {env}= require('../env');
 const OFFERS_CHANNEL = process.env.OFFERS_CHANNEL;
 const CHECK_CHANNEL = process.env.CHECK_CHANNEL;
 const APPROVE_REJECT_CHANNEL = process.env.APPROVE_REJECT_CHANNEL;

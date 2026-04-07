@@ -5,7 +5,6 @@ const { firebaseUpdate, firebaseRemove, firebasePush } = require('../firebaseHel
 const { safeSendMessage, safeEditMessageText, getBot } = require('../utils/botWrapper');
 const { formatOffer, getPrice, delay, startOfferNowButton } = require('../utils/helpers');
 const { finishOffer }    = require('./offerService');
-const { env }   = require('../env');
 const OFFERS_CHANNEL         = process.env.OFFERS_CHANNEL;
 const CHECK_CHANNEL          = process.env.CHECK_CHANNEL;
 const APPROVE_REJECT_CHANNEL = process.env.APPROVE_REJECT_CHANNEL;

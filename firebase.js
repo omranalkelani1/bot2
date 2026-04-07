@@ -1,5 +1,4 @@
 const admin = require('firebase-admin');
-const {env} = require('./env');
 
 // // ضع الملف الذي حملته في نفس المجلد أو في مكان آمن
 // const serviceAccount = require('./omranoo.json');
