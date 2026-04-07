@@ -134,7 +134,8 @@ ${trade.step}
 function startOfferNowButton(offerId) {
   return {
     text: '▶️ احجز الآن',
-    url: `https://t.me/testOmran_bot?start=offer_${offerId}`,
+    url: `https://t.me/omran2002_bot?start=offer_${offerId}`,
+    // url: `https://t.me/testOmran_bot?start=offer_${offerId}`,
   };
 }
 module.exports = {
