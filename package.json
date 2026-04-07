@@ -1,0 +1,16 @@
+{
+  "name": "usdt-bot",
+  "version": "1.0.0",
+  "description": "Telegram USDT bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.6.1",
+    "node-telegram-bot-api": "^0.67.0"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}
