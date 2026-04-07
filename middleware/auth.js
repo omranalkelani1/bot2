@@ -2,9 +2,9 @@
 // التحقق من صلاحيات الأدمن بطريقة مركزية
 
 const { getBot }       = require('../utils/botWrapper');
-const { process: env } = require('../env');
-
-const CHECK_CHANNEL = env.env.CHECK_CHANNEL;
+// const { process } = require('../env');
+// const env = process.env
+const CHECK_CHANNEL = env.CHECK_CHANNEL;
 
 /**
  * يتحقق أن المرسل أدمن أو مالك قناة CHECK_CHANNEL

@@ -16,11 +16,11 @@ const { callbackTypes, transform_way, offerStatus } = require('../config/constan
 const { sendOfferForReview, finishOffer, cancelOffer } = require('../services/offerService');
 const { cancelTrade, finalizeTrade, sendRatingRequest } = require('../services/tradeService');
 const { sendWelcomeMessage } = require('./commandHandlers');
-const { process: env } = require('../env');
-
-const OFFERS_CHANNEL = env.env.OFFERS_CHANNEL;
-const CHECK_CHANNEL = env.env.CHECK_CHANNEL;
-const APPROVE_REJECT_CHANNEL = env.env.APPROVE_REJECT_CHANNEL;
+// const process= require('../env');
+// const env = process.env
+const OFFERS_CHANNEL = env.OFFERS_CHANNEL;
+const CHECK_CHANNEL = env.CHECK_CHANNEL;
+const APPROVE_REJECT_CHANNEL = env.APPROVE_REJECT_CHANNEL;
 
 function register(bot) {
   bot.on('callback_query', async (query) => {
@@ -360,7 +360,7 @@ function register(bot) {
       await firebaseUpdate(`bot_state/trades/${offerId}`, { step: trade.step });
 
       await safeSendMessage(trade.sellerId,
-        `📤 الرجاء إرسال إثباتات التحويل (صور فقط)\n\nالكمية: ${(+trade.quantity + 0.25).toFixed(2)} USDT\nستستلم: ${getPrice(offer.price, trade.quantity)}\n\nعنوان المحفظة:\n<code>${env.env.PAYMENT || 'غير معرف'}</code>\nعبر شبكة BEP20`,
+        `📤 الرجاء إرسال إثباتات التحويل (صور فقط)\n\nالكمية: ${(+trade.quantity + 0.25).toFixed(2)} USDT\nستستلم: ${getPrice(offer.price, trade.quantity)}\n\nعنوان المحفظة:\n<code>${env.PAYMENT || 'غير معرف'}</code>\nعبر شبكة BEP20`,
         {
           parse_mode: 'HTML',
           reply_markup: { inline_keyboard: [[{ text: '📤 إنهاء رفع الإثباتات', callback_data: JSON.stringify({ type: 'seller_done_upload', offerId: offer.id }) }]] },
