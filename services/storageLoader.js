@@ -20,7 +20,11 @@ const defaultData = {
 
 async function loadStorage(retry = 2) {
   try {
+
+    console.log('hii');
     const snapshot = await db.ref('bot_state').once('value');
+    
+    console.log('welcome');
     const data     = snapshot.val();
 
     if (!data) {
@@ -58,7 +62,9 @@ async function loadStorage(retry = 2) {
 }
 
 async function initStorage() {
+  
   try {
+    console.log('a,');
     const data = await loadStorage();
     store.hydrate({
       globals: data.globals,
@@ -66,7 +72,7 @@ async function initStorage() {
       trades:  data.trades,
       users:   data.users,
     });
-
+    
     // ضمان القيم الافتراضية
     const g = store.getGlobals();
     if (typeof g.botEnabled          === 'undefined') store.setGlobals({ botEnabled: true });

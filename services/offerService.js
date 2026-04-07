@@ -5,11 +5,10 @@ const { firebaseUpdate, firebaseRemove, firebasePush } = require('../firebaseHel
 const { safeSendMessage, safeEditMessageText } = require('../utils/botWrapper');
 const { formatOffer, formatPreview, startOfferNowButton, getAvgRating, getCategory } = require('../utils/helpers');
 const { callbackTypes, transform_way } = require('../config/constants');
-// const { process } = require('../env');
-// const env = process.env
-const OFFERS_CHANNEL = env.OFFERS_CHANNEL;
-const CHECK_CHANNEL = env.CHECK_CHANNEL;
-const APPROVE_REJECT_CHANNEL = env.APPROVE_REJECT_CHANNEL;
+const { env } = require('../env');
+const OFFERS_CHANNEL = process.env.OFFERS_CHANNEL;
+const CHECK_CHANNEL = process.env.CHECK_CHANNEL;
+const APPROVE_REJECT_CHANNEL = process.env.APPROVE_REJECT_CHANNEL;
 
 // ─── findMatchingOffers ───────────────────────────────────────────────────────
 function findMatchingOffers(newOffer) {
