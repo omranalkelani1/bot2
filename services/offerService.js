@@ -200,9 +200,11 @@ async function finishAllOffers() {
   }
 
   // مسح جميع العروض من الذاكرة
-  for (const id in offers) store.deleteOffer(id);
-
-  await safeSendMessage(
+  store.setOffers({});
+  store.setTrades({});
+  await firebaseRemove(`bot_state/offers`);  
+  await firebaseRemove(`bot_state/trades`);  
+ return await safeSendMessage(
     OFFERS_CHANNEL,
     '🎯🎯 تم إغلاق جميع العروض القديمة لضبط حركة السوق اليومية'
   );

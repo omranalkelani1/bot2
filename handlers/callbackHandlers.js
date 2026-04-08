@@ -358,7 +358,7 @@ function register(bot) {
       await firebaseUpdate(`bot_state/trades/${offerId}`, { step: trade.step });
 
       await safeSendMessage(trade.sellerId,
-        `📤 الرجاء إرسال إثباتات التحويل (صور فقط)\n\nالكمية: ${(+trade.quantity + 0.25).toFixed(2)} USDT\nستستلم: ${getPrice(offer.price, trade.quantity)}\n\nعنوان المحفظة:\n<code>${env.PAYMENT || 'غير معرف'}</code>\nعبر شبكة BEP20`,
+        `📤 الرجاء إرسال إثباتات التحويل (صور فقط)\n\nالكمية: ${(+trade.quantity + 0.25).toFixed(2)} USDT\nستستلم: ${getPrice(offer.price, trade.quantity)}\n\nعنوان المحفظة:\n<code>${process.env.PAYMENT || 'غير معرف'}</code>\nعبر شبكة BEP20`,
         {
           parse_mode: 'HTML',
           reply_markup: { inline_keyboard: [[{ text: '📤 إنهاء رفع الإثباتات', callback_data: JSON.stringify({ type: 'seller_done_upload', offerId: offer.id }) }]] },

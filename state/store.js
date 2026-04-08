@@ -19,10 +19,12 @@ module.exports = {
 
   getOffers:     ()        => offers,
   setOffer:      (id, val) => { offers[id] = val; },
+  setOffers:     (newOffers) => { offers = newOffers; },
   deleteOffer:   (id)      => { delete offers[id]; },
 
   getTrades:     ()        => trades,
   setTrade:      (id, val) => { trades[id] = val; },
+  setTrades:     (newTrades) => { trades = newTrades; },
   deleteTrade:   (id)      => { delete trades[id]; },
 
   getUsers:      ()        => userStates,
